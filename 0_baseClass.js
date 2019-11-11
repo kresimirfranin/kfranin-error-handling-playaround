@@ -37,10 +37,18 @@ class BadRequestError extends UserFacingError {
   }
 }
 
+class NotFoundError extends UserFacingError {
+  get StatusCode() {
+    return 404;
+  }
+}
+
 
 module.exports = {
   ApplicationError,
   DatabaseError,
   OutgoingRequestError,
-  UserFacingError
+  UserFacingError,
+  BadRequestError,
+  NotFoundError
 };

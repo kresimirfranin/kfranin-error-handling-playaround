@@ -1,4 +1,5 @@
 'use strict'
+import {ApplicationError} from "0_baseClass";
 
 function addErrorHandler(fastify) {
   fastify.setErrorHandler((error, request, reply) => {
@@ -6,7 +7,11 @@ function addErrorHandler(fastify) {
     fastify.log.debug(`Payload: `, request.body)
     fastify.log.error(`Error occurred: `, error)
 
-    reply.status(error.statusCode).send({ message: error.message })
+    if (error instanceof ApplicationError) {
+      reply.status(error.statusCode).send({ message: error.message })
+    } else {
+      reply.status(500).send({ message: 'Error occurred during request' })
+    }
   })
 }
 
