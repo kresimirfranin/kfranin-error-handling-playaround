@@ -1,0 +1,10 @@
+
+throwing anything possible in javascript (no stack trace if it's not error)
+
+check if concatinating error always results in error.toString()
+
+async await in node 12 gonna give stacktrace
+
+try catch in test expecting an error doesnt  test if success happens (use assertThrows)
+
+
